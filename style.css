@@ -1,6 +1,6 @@
 body{
   background-image: url("images/back3.jpg");
-  background-size: cover; 
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   text-align:center;
@@ -8,7 +8,7 @@ body{
   padding:0;
 }
 .floatleft{
-	float: left; 
+	float: left;
 	display: flex;
 }
 .logo{
@@ -16,7 +16,7 @@ body{
 	margin-left: 40px;
 	font-family: 'Rye', cursive;
 	font-size: 80px;
-}  
+}
 .main{
 	margin-left: 12%;
 }
@@ -25,7 +25,7 @@ body{
 .sidebar{
 	 margin: 50px 50px 50px 50px;
 	 height: 550px;
-	 width: 180px; 
+	 width: 180px;
 
 }
 
@@ -46,7 +46,7 @@ body{
 	background-color: #ECE5DD;
 	margin: 20px 50px 0px -50px;
 	height: 550px;
-	width: 72%; 
+	width: 72%;
 }
 .workingbar{
 	margin-left: 6%;
@@ -67,5 +67,3 @@ body{
 	float: left;
 	display: flex;
 }
-
-	
