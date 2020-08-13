@@ -38,11 +38,12 @@
 		<div class="sidebar">
 			<ul class="list-group">
 				<li class="list-group-item list-group-item-primary">
-					<h3 class="size">Select Size Of Array </h3>
-					<input type="range" min="10" max="200" value="50" class="slider" id="myRange" name="myRange">
+					<h3 class="size">Select Size and Speed </h3>
+					<input type="range" min="10" max="200" value="50" class="slider" id="sizeId" name="myRange0">
+					<input type="range" min="1" max="2000" value="100" class="slider" id="speedId" name="myRange1">
 				</li>
 				<li class="list-group-item list-group-item-secondary">
-					<h3 class="size">Select Any Sorting Algo </h3>
+					<h3 class="size">Select Any Sorting Algorithm</h3>
 					<a href="#"><button type="button" id="mergeSort" class="btn btn-dark">&nbspMerge
 							Sort</button></a><br>
 					<a href="#"><button type="button" id="quickSort" class="btn btn-dark">&nbspQuick Sort&nbsp
@@ -63,8 +64,6 @@
 
 		<div>
 			<canvas class="figure" id="target-id" width=1100 height=550></canvas>
-
-
 		</div>
 
 		<div>

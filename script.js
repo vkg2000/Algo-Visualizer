@@ -1,17 +1,19 @@
-// Getting canvas
+// Global Variables
 canvas = document.getElementById("target-id");
 context = canvas.getContext("2d");
-unsorted = 'orange';
-sorted = 'cyan';
-context.fillStyle = unsorted;
-color = [];
+col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
+arr_col = [];
 arr = [];
-intervalRunning = true;
+intervalRunning = false;
+sliderSize = document.getElementById("sizeId");
+sliderSpeed = document.getElementById("speedId");
+speed = sliderSpeed.value;
+changed = false;
 
-var slider = document.getElementById("myRange");
-draw(getArray(slider.value), slider.value);
+getArray(sliderSize.value);
+draw();
 
-// utility
+// Utility
 function clrInterval() {
     if (intervalRunning) {
         intervalRunning = false;
@@ -19,10 +21,17 @@ function clrInterval() {
     }
 }
 
-slider.oninput = function () {
+sliderSize.oninput = function () {
     clrInterval();
     getArray(this.value);
     draw();
+}
+
+sliderSpeed.oninput = function () {
+    speed = 2000 - this.value;
+    changed = intervalRunning;
+    clrInterval();
+    document.getElementById("bubbleSort").onclick();
 }
 
 // arr of random numbers of given size
@@ -35,8 +44,8 @@ function getArray(length) {
     arr = arr_random;
     arr_random = new Array();
     for (var i = 0; i < length; i++)
-        arr_random.push(false);
-    color = arr_random;
+        arr_random.push(col[0]);
+    arr_col = arr_random;
 }
 
 // Event Listeners defined here
@@ -44,20 +53,12 @@ function draw() {
     context.clearRect(0, 0, 1100, 550);
     var wid = 1100 / arr.length - 1;
     var srt = 0;
-    if (color[0])
-        context.fillStyle = sorted;
     for (var i = 0; i < arr.length; i++) {
-        if (i > 0) {
-            if (color[i - 1] != color[i]) {
-                if (color[i]) context.fillStyle = sorted;
-                else context.fillStyle = unsorted;
-            }
-        }
+        context.fillStyle = arr_col[i];
         context.fillRect(srt, 0, wid, arr[i]);
         srt += wid;
         srt++;
     }
-    context.fillStyle = unsorted;
 }
 
 function mergeSort() {
@@ -65,25 +66,41 @@ function mergeSort() {
 }
 
 function bubbleSort() {
+    var kk = j + 1;
     if (arr[j] > arr[j + 1]) {
         var k = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = k;
+        arr_col[kk] = col[1];
+        arr_col[kk + 1] = col[2];
+    }
+    else {
+        arr_col[kk] = col[2];
+        arr_col[kk + 1] = col[1];
     }
     j++;
-    if (j >= color.length - i - 1) {
+    var b = false;
+    if (j >= arr.length - i - 1) {
+        arr_col[j + 1] = col[3];
         j = 0;
-        color[color.length - i - 1] = true;
+        b = true;
+        arr_col[arr.length - i - 1] = col[3];
         i++;
         if (i >= arr.length) {
             clrInterval();
+            for (i = 0; i < arr.length; i++)
+                arr_col[i] = col[4];
         }
     }
     draw();
+    if (!b) {
+        arr_col[kk] = col[0];
+        arr_col[kk + 1] = col[0];
+    }
 }
 
 function quickSort() {
-    
+
 }
 
 function heapSort() {
@@ -92,10 +109,9 @@ function heapSort() {
 
 // Event Listeners declared here
 document.getElementById("reset").onclick = function () {
-    getArray(50);
+    getArray(sliderSize.value);
     clrInterval();
     draw();
-    document.getElementById("myRange").value = 50;
 }
 
 document.getElementById("quickSort").onclick = function () {
@@ -103,10 +119,13 @@ document.getElementById("quickSort").onclick = function () {
 }
 
 document.getElementById("bubbleSort").onclick = function () {
-    i = 0;
-    j = 0;
+    if (!changed) {
+        i = 0;
+        j = 0;
+    }
     intervalRunning = true;
-    itvl = setInterval(bubbleSort, 1);
+    changed = false;
+    itvl = setInterval(bubbleSort, speed);
 }
 
 document.getElementById("mergeSort").onclick = function () {
@@ -114,5 +133,5 @@ document.getElementById("mergeSort").onclick = function () {
 }
 
 document.getElementById("heapSort").onclick = function () {
-    mergeSort();
+    heapSort();
 }
