@@ -1,8 +1,19 @@
+// Getting canvas
+canvas = document.getElementById("target-id");
+context = canvas.getContext("2d");
+context.fillStyle = 'red';
+// context.lineWidth = 2;
+arr = [];
+
 var slider = document.getElementById("myRange");
 draw(getArray(slider.value), slider.value);
 
-arr = [];
 
+
+// Utility
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 slider.oninput = function () {
     getArray(this.value);
     draw();
@@ -20,12 +31,18 @@ function getArray(length) {
 
 // Event Listeners defined here
 function draw() {
+    context.clearRect(0, 0, 1100, 550);
     var div = document.getElementById("target-id");
     var wid = 1100 / arr.length - 1;
-    var html = "";
+    wid /= 3.5;
+    // var html = "";
+    var srt = 0;
     for (var i = 0; i < arr.length; i++) {
-        html += "<div class= 'bar'style = 'height: " + arr[i] + "px; width: " + wid + "px;'></div> " + "<br>";
-        div.innerHTML = html;
+        context.beginPath();
+        context.fillRect(srt, 0, wid, arr[i] / 3.5);
+        // context.fillRect();
+        srt += wid;
+        srt++;
     }
 }
 
@@ -35,16 +52,16 @@ function mergeSort() {
 
 function bubbleSort() {
     var i = 0, j = 0;
-    for (i = 0; i < arr.length - 1; i++) {
-        for (j = 0; j < arr.length - 2; j++) {
+    for (i = 0; i < arr.length; i++) {
+        for (j = 0; j < arr.length - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 var k = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = k;
             }
             draw();
+            sleep(2000);
         }
-        console.log("Running");
     }
 }
 
