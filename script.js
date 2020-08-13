@@ -8,6 +8,7 @@ slider.oninput = function () {
     draw();
 }
 
+// arr of random numbers of given size
 function getArray(length) {
     var arr_random = new Array();
     var arr_range = 500;
@@ -17,6 +18,7 @@ function getArray(length) {
     arr = arr_random;
 }
 
+// Event Listeners defined here
 function draw() {
     var div = document.getElementById("target-id");
     var wid = 1100 / arr.length - 1;
@@ -27,11 +29,52 @@ function draw() {
     }
 }
 
+function mergeSort() {
+
+}
+
+function bubbleSort() {
+    var i = 0, j = 0;
+    for (i = 0; i < arr.length - 1; i++) {
+        for (j = 0; j < arr.length - 2; j++) {
+            if (arr[j] > arr[j + 1]) {
+                var k = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = k;
+            }
+            draw();
+        }
+        console.log("Running");
+    }
+}
+
+function quickSort() {
+
+}
+
+function heapSort() {
+
+}
+
+// Event Listeners declared here
 document.getElementById("reset").onclick = function () {
     getArray(50);
     draw();
+    document.getElementById("myRange").value = 50;
+}
+
+document.getElementById("quickSort").onclick = function () {
+    quickSort();
+}
+
+document.getElementById("bubbleSort").onclick = function () {
+    bubbleSort();
 }
 
 document.getElementById("mergeSort").onclick = function () {
-    mergeSort;
+    mergeSort();
+}
+
+document.getElementById("heapSort").onclick = function () {
+    mergeSort();
 }
