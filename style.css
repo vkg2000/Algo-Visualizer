@@ -67,3 +67,8 @@ body{
 	float: left;
 	display: flex;
 }
+
+.develop{
+	margin-left: -10px;
+	font-family: 'Chelsea Market', cursive;
+}
