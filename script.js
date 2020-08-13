@@ -7,7 +7,11 @@ arr = [];
 intervalRunning = false;
 sliderSize = document.getElementById("sizeId");
 sliderSpeed = document.getElementById("speedId");
-speed = sliderSpeed.value;
+maxTime = 1000;
+speed = maxTime - sliderSpeed.value;
+if (speed <= 5) speed *= speed * 2;
+if (speed <= 20) speed *= speed;
+
 changed = false;
 
 getArray(sliderSize.value);
@@ -28,7 +32,8 @@ sliderSize.oninput = function () {
 }
 
 sliderSpeed.oninput = function () {
-    speed = 2000 - this.value;
+    speed = maxTime - this.value;
+    if (speed <= 20) speed *= speed;
     changed = intervalRunning;
     clrInterval();
     document.getElementById("bubbleSort").onclick();
@@ -122,6 +127,7 @@ document.getElementById("bubbleSort").onclick = function () {
     if (!changed) {
         i = 0;
         j = 0;
+        arr_col[0] = col[0];
     }
     intervalRunning = true;
     changed = false;
