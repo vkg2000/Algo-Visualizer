@@ -8,7 +8,7 @@ body{
   padding:0;
 }
 .floatleft{
-	float: left;
+	float: left; 
 	display: flex;
 }
 .logo{
@@ -58,7 +58,6 @@ body{
 
 
 .bar{
-	width: 5px;
 	margin-left: 1px;
 	background-color: red;
 }

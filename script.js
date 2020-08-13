@@ -28,7 +28,7 @@ function draw(arr,size)
     
     var html = "";
     for (var i=0;i<size;i++) {
-        html += "<div class= 'bar'style = 'height: "+arr[i] +"px;'></div> "+ "<br>";
+        html += "<div class= 'bar'style = 'height: "+arr[i] +"px; width: "+ x*arr[i] +"px;'></div> "+ "<br>";
 
     div.innerHTML = html;
 }
