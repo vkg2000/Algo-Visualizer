@@ -1,0 +1,72 @@
+body{
+  background-image: url("images/back3.jpg");
+  background-size: cover; 
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align:center;
+  margin:auto;
+  padding:0;
+}
+.floatleft{
+	float: left;
+	display: flex;
+}
+.logo{
+	margin-top: 20px;
+	margin-left: 40px;
+	font-family: 'Rye', cursive;
+	font-size: 80px;
+}  
+.main{
+	margin-left: 12%;
+}
+
+
+.sidebar{
+	 margin: 50px 50px 50px 50px;
+	 height: 550px;
+	 width: 180px; 
+
+}
+
+.size{
+	font-family: 'Chelsea Market', cursive;
+	font-size: 130%;
+}
+
+.btn{
+	margin-bottom: 4px;
+}
+
+.btnsort{
+	width: 100%;
+}
+
+.figure{
+	background-color: #ECE5DD;
+	margin: 20px 50px 0px -50px;
+	height: 550px;
+	width: 72%; 
+}
+.workingbar{
+	margin-left: 6%;
+	clear: left;
+	float: left;
+	display: flex;
+}
+
+
+
+.bar{
+	width: 5px;
+	margin-left: 1px;
+	background-color: red;
+}
+
+#target-id{
+	clear: left;
+	float: left;
+	display: flex;
+}
+
+	
