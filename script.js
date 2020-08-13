@@ -1,7 +1,7 @@
 // Getting canvas
 canvas = document.getElementById("target-id");
 context = canvas.getContext("2d");
-context.fillStyle = 'red';
+context.fillStyle = 'orange';
 // context.lineWidth = 2;
 arr = [];
 
@@ -50,18 +50,19 @@ function mergeSort() {
 }
 
 function bubbleSort() {
-    var i = 0, j = 0;
-    for (i = 0; i < arr.length; i++) {
-        for (j = 0; j < arr.length - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                var k = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = k;
-            }
-            draw();
-            sleep(2000);
-        }
+    console.log("YES");
+    if (arr[j] > arr[j + 1]) {
+        var k = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = k;
     }
+    j++;
+    if (j >= arr.length - 1) {
+        j = 0;
+        i++;
+        if (i >= arr.length) clearInterval(itvl);
+    }
+    draw();
 }
 
 function quickSort() {
@@ -84,7 +85,9 @@ document.getElementById("quickSort").onclick = function () {
 }
 
 document.getElementById("bubbleSort").onclick = function () {
-    bubbleSort();
+    i = 0;
+    j = 0;
+    itvl = setInterval(bubbleSort, 1);
 }
 
 document.getElementById("mergeSort").onclick = function () {
