@@ -60,6 +60,7 @@ body{
 .bar{
 	margin-left: 1px;
 	background-color: red;
+	margin: 0 auto;
 }
 
 #target-id{
