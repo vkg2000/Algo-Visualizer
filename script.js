@@ -23,7 +23,7 @@ function getarr(length) {
 
 function draw(arr, size) {
     var div = document.getElementById("target-id");
-    var wid = 1100 / arr.length;
+    var wid = 1100 / arr.length - 1;
     var html = "";
     for (var i = 0; i < size; i++) {
         html += "<div class= 'bar'style = 'height: " + arr[i] + "px; width: " + wid + "px;'></div> " + "<br>";
