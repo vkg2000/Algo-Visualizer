@@ -4,6 +4,7 @@ context = canvas.getContext("2d");
 context.fillStyle = 'orange';
 // context.lineWidth = 2;
 arr = [];
+intervalRunning = true;
 
 var slider = document.getElementById("myRange");
 draw(getArray(slider.value), slider.value);
@@ -33,13 +34,15 @@ function getArray(length) {
 function draw() {
     context.clearRect(0, 0, 1100, 550);
     var wid = 1100 / arr.length - 1;
-    wid /= 3.5;
+    // wid /= 3.5;
     // var html = "";
     var srt = 0;
     for (var i = 0; i < arr.length; i++) {
         // context.beginPath();
-        context.fillRect(srt, 0, wid, arr[i] / 3.5);
+        // context.translate(0.5, 0.5);
+        context.fillRect(srt, 0, wid, arr[i]);
         // context.fillRect();
+        // context.translate(-0.5, -0.5);
         srt += wid;
         srt++;
     }
@@ -60,7 +63,10 @@ function bubbleSort() {
     if (j >= arr.length - 1) {
         j = 0;
         i++;
-        if (i >= arr.length) clearInterval(itvl);
+        if (i >= arr.length) {
+            clearInterval(itvl);
+            intervalRunning = false;
+        }
     }
     draw();
 }
@@ -76,6 +82,7 @@ function heapSort() {
 // Event Listeners declared here
 document.getElementById("reset").onclick = function () {
     getArray(50);
+    if (intervalRunning) clearInterval(itvl);
     draw();
     document.getElementById("myRange").value = 50;
 }
@@ -87,6 +94,7 @@ document.getElementById("quickSort").onclick = function () {
 document.getElementById("bubbleSort").onclick = function () {
     i = 0;
     j = 0;
+    intervalRunning = true;
     itvl = setInterval(bubbleSort, 1);
 }
 
