@@ -29,6 +29,6 @@ function draw(arr, size) {
     }
 }
 
-document.getElementById("reset").onclick = function(){
-    draw(getarr(50), 50);
+document.getElementById("reset").onclick = function () {
+    draw(getArray(50), 50);
 }
