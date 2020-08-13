@@ -5,13 +5,13 @@ draw(getarr(slider.value), slider.value);
 
 slider.oninput = function () {
     output.innerHTML = this.value;
-    var arr = getarr(this.value);
+    var arr = getArray(this.value);
     draw(arr, this.value);
 }
 
 
 
-function getarr(length) {
+function getArray(length) {
     var arr_random = new Array();
     var arr_range = 500;
     for (var i = 0; i < length; i++) {
