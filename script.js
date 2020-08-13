@@ -32,13 +32,12 @@ function getArray(length) {
 // Event Listeners defined here
 function draw() {
     context.clearRect(0, 0, 1100, 550);
-    var div = document.getElementById("target-id");
     var wid = 1100 / arr.length - 1;
     wid /= 3.5;
     // var html = "";
     var srt = 0;
     for (var i = 0; i < arr.length; i++) {
-        context.beginPath();
+        // context.beginPath();
         context.fillRect(srt, 0, wid, arr[i] / 3.5);
         // context.fillRect();
         srt += wid;
