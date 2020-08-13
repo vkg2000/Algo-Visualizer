@@ -1,10 +1,7 @@
 var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
 draw(getarr(slider.value), slider.value);
 
 slider.oninput = function () {
-    output.innerHTML = this.value;
     var arr = getarr(this.value);
     draw(arr, this.value);
 }
@@ -30,4 +27,8 @@ function draw(arr, size) {
 
         div.innerHTML = html;
     }
+}
+
+document.getElementById("reset").onclick = function(){
+    draw(getarr(50), 50);
 }
