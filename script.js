@@ -188,9 +188,6 @@ document.getElementById("reset").onclick = function () {
     draw();
 }
 
-document.getElementById("quickSort").onclick = function () {
-    quickSort();
-}
 
 document.getElementById("bubbleSort").onclick = function () {
     if (intervalRunning)
@@ -214,3 +211,84 @@ document.getElementById("mergeSort").onclick = function () {
 document.getElementById("heapSort").onclick = function () {
     heapSort();
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function sleep(ms) { 
+    return new Promise(resolve => setTimeout(resolve, ms)); 
+}
+
+async function swapp(arr, a, b) { 
+             
+    await sleep(speed); 
+    [arr[a],arr[b]]=[arr[b],arr[a]];
+    draw();
+}
+
+
+document.getElementById("quickSort").onclick = function () {
+    runningAlgo=
+    QuickSort(0,arr.length-1);
+    draw();
+
+}
+
+async function QuickSort(start,end)
+{
+    
+    if(start<end)
+    {
+
+        var pindex =await Partition(start,end);
+        await Promise.all([QuickSort(start,pindex-1), QuickSort(pindex+1,end)]);
+
+
+    }
+    else{
+        if(start<arr.length)
+            arr_col[start]=col[4];
+        else if(end<arr.length)
+            arr_col[end]=col[4];
+        await sleep(100);
+        draw();
+
+    }
+    
+}
+
+async function Partition(start,end)
+{
+    var pivot = arr[end];
+    var inti_col=arr_col[end];
+    arr_col[end]=col[2];
+
+    var pindex = start;
+    for(var i=start;i<end;i++)
+    {
+        if(arr[i]<=pivot)
+        {
+
+         //   var inti_col_i=arr_col[i];
+         //   var inti_col_pindex=arr_col[pindex];
+         //   arr_col[i]=col[3];
+         //   arr_col[pindex]=col[1];
+
+            await swapp(arr, i, pindex);
+
+         //   arr_col[i]=inti_col_i;
+          //  arr_col[pindex]=inti_col_pindex;            
+            pindex++;
+        }
+    }
+    arr_col[pindex]=col[4];
+    if(pindex!=end)
+         arr_col[end]=inti_col;
+
+    await swapp(arr, end, pindex);
+    
+    return pindex;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
