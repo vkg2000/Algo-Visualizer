@@ -11,6 +11,21 @@ maxTime = 1000;
 speed = maxTime - sliderSpeed.value;
 if (speed <= 5) speed *= speed * 2;
 if (speed <= 20) speed *= speed;
+const setAsyncTimeout = (cb, timeout = 0) => new Promise(resolve => {
+    setTimeout(() => {
+        cb();
+        resolve();
+    }, timeout);
+});
+
+// This variable should contain the number of running algorithm at all times
+// 0 : no runningAlgo
+// 1 : mergeSort
+// 2 : quickSort
+// 3 : heapSort
+// 4 : bubbleSort
+runningAlgo = 0;
+
 
 changed = false;
 
@@ -36,7 +51,8 @@ sliderSpeed.oninput = function () {
     if (speed <= 20) speed *= speed;
     changed = intervalRunning;
     clrInterval();
-    document.getElementById("bubbleSort").onclick();
+    if (runningAlgo == 4)
+        document.getElementById("bubbleSort").onclick();
 }
 
 // arr of random numbers of given size
@@ -66,8 +82,59 @@ function draw() {
     }
 }
 
-function mergeSort() {
-
+async function mergeSort(i, j) {
+    let mid = Math.floor((i + j) / 2);
+    if (i != mid) {
+        await setAsyncTimeout(() => {
+            mergeSort(i, mid);
+        }, 500);
+        await setAsyncTimeout(() => {
+            mergeSort(mid + 1, j);
+        }, 500);
+    }
+    // await merge(i, mid, mid + 1, j);
+    await setAsyncTimeout(() => {
+        merge(i, mid, mid + 1, j);
+        draw();
+    }, 500);
+}
+// Utility for mergeSort
+async function merge(i0, j0, i1, j1) {
+    let i = i0, j = i1;
+    let arr_temp = new Array();
+    while (i <= j0 || j <= j1) {
+        if (i <= j0 && j <= j1) {
+            if (arr[i] < arr[j]) {
+                arr_temp.push(arr[i]);
+                i++;
+            }
+            else {
+                arr_temp.push(arr[j]);
+                j++;
+            }
+        }
+        else if (i > j0) {
+            while (j <= j1) {
+                arr_temp.push(arr[j]);
+                j++;
+            }
+        }
+        else if (j > j1) {
+            while (i <= j0) {
+                arr_temp.push(arr[i]);
+                i++;
+            }
+        }
+    }
+    for (i = 0; i < arr_temp.length; i++) {
+        arr[i0 + i] = arr_temp[i];
+    }
+    // console.log(1);
+    // await setAsyncTimeout(() => {
+    //     draw();
+    //     console.log(2);
+    //     // Do more stuff
+    // }, 10000);
 }
 
 function bubbleSort() {
@@ -93,6 +160,7 @@ function bubbleSort() {
         i++;
         if (i >= arr.length) {
             clrInterval();
+            runningAlgo = 0;
             for (i = 0; i < arr.length; i++)
                 arr_col[i] = col[4];
         }
@@ -116,6 +184,7 @@ function heapSort() {
 document.getElementById("reset").onclick = function () {
     getArray(sliderSize.value);
     clrInterval();
+    runningAlgo = 0;
     draw();
 }
 
@@ -124,18 +193,22 @@ document.getElementById("quickSort").onclick = function () {
 }
 
 document.getElementById("bubbleSort").onclick = function () {
+    if (intervalRunning)
+        return;
     if (!changed) {
         i = 0;
         j = 0;
         arr_col[0] = col[0];
     }
+    runningAlgo = 4;
     intervalRunning = true;
     changed = false;
     itvl = setInterval(bubbleSort, speed);
 }
 
 document.getElementById("mergeSort").onclick = function () {
-    mergeSort();
+    mergeSort(0, arr.length - 1);
+    draw();
 }
 
 document.getElementById("heapSort").onclick = function () {
