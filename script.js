@@ -213,28 +213,12 @@ document.getElementById("heapSort").onclick = function () {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-//swap function 
-
-async function swap(arr, a, b) { 
-             
-    await sleep(speed); 
-    [arr[a],arr[b]]=[arr[b],arr[a]];
-    draw();
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 function sleep(ms) { 
     return new Promise(resolve => setTimeout(resolve, ms)); 
 }
 
-async function swapp(arr, a, b) { 
+async function swap(arr, a, b) { 
              
     await sleep(speed); 
     [arr[a],arr[b]]=[arr[b],arr[a]];
@@ -256,8 +240,6 @@ async function QuickSort(start,end)
 
         var pindex =await Partition(start,end);
         await Promise.all([QuickSort(start,pindex-1), QuickSort(pindex+1,end)]);
-
-
     }
     else{
         if(start<arr.length)
@@ -282,16 +264,7 @@ async function Partition(start,end)
     {
         if(arr[i]<=pivot)
         {
-
-         //   var inti_col_i=arr_col[i];
-         //   var inti_col_pindex=arr_col[pindex];
-         //   arr_col[i]=col[3];
-         //   arr_col[pindex]=col[1];
-
-            await swapp(arr, i, pindex);
-
-         //   arr_col[i]=inti_col_i;
-          //  arr_col[pindex]=inti_col_pindex;            
+            await swap(arr, i, pindex);          
             pindex++;
         }
     }
@@ -299,7 +272,7 @@ async function Partition(start,end)
     if(pindex!=end)
          arr_col[end]=inti_col;
 
-    await swapp(arr, end, pindex);
+    await swap(arr, end, pindex);
     
     return pindex;
 }
