@@ -8,6 +8,9 @@ intervalRunning = false;
 sliderSize = document.getElementById("sizeId");
 sliderSpeed = document.getElementById("speedId");
 maxTime = 1000;
+
+rst_state=true; //TELLS WHETHER WE ARE INSIDE ANY SORT FUNC ,IF SO THEN PAGE GET REFRESHES AND IF NOT THEN RESET WORKS AS USUAL (NO RELODING OF PAGE)
+
 speed = maxTime - sliderSpeed.value;
 if (speed <= 5) speed *= speed * 2;
 if (speed <= 20) speed *= speed;
@@ -124,10 +127,17 @@ function heapSort() {
 
 // Event Listeners declared here
 document.getElementById("reset").onclick = function () {
+    if(rst_state==true){
     getArray(sliderSize.value);
     clrInterval();
     runningAlgo = 0;
-    draw();
+    draw();}
+    else
+        {
+            window.location.reload();
+            rst_state=false;
+            
+        }
 }
 
 
@@ -204,9 +214,40 @@ async function swap(arr, a, b) {
     draw();
 }
 
+//FUNCTION TO DISABLE ALL OTHER BUTTONS AND SLIDER WHILE RUNNING OF ANY SORTING FUNCTION
+
+function disable_all(){
+    document.getElementById("sizeId").disabled=true;
+    if(runningAlgo==1)
+    {
+        document.getElementById("quickSort").disabled=true;
+        document.getElementById("heapSort").disabled=true;
+        document.getElementById("bubbleSort").disabled=true;
+    }
+    else if(runningAlgo==2)
+    {
+        document.getElementById("mergeSort").disabled=true;
+        document.getElementById("heapSort").disabled=true;
+        document.getElementById("bubbleSort").disabled=true;
+    }
+    else if(runningAlgo==3)
+    {
+        document.getElementById("mergeSort").disabled=true;
+        document.getElementById("quickSort").disabled=true;
+        document.getElementById("bubbleSort").disabled=true;
+    }
+    else{
+        document.getElementById("mergeSort").disabled=true;
+        document.getElementById("quickSort").disabled=true;
+        document.getElementById("heapSort").disabled=true;
+    }
+    
+}
+
 
 document.getElementById("quickSort").onclick = function () {
     runningAlgo = 2;
+    disable_all();
     QuickSort(0, arr.length - 1);
     draw();
 
@@ -215,6 +256,7 @@ document.getElementById("quickSort").onclick = function () {
 async function QuickSort(start,end)
 {
 
+    rst_state=false;
     if(start<end)
     {
 
