@@ -11,12 +11,6 @@ maxTime = 1000;
 speed = maxTime - sliderSpeed.value;
 if (speed <= 5) speed *= speed * 2;
 if (speed <= 20) speed *= speed;
-const setAsyncTimeout = (cb, timeout = 0) => new Promise(resolve => {
-    setTimeout(() => {
-        cb();
-        resolve();
-    }, timeout);
-});
 
 // This variable should contain the number of running algorithm at all times
 // 0 : no runningAlgo
@@ -25,7 +19,6 @@ const setAsyncTimeout = (cb, timeout = 0) => new Promise(resolve => {
 // 3 : heapSort
 // 4 : bubbleSort
 runningAlgo = 0;
-
 
 changed = false;
 
@@ -38,6 +31,13 @@ function clrInterval() {
         intervalRunning = false;
         clearInterval(itvl);
     }
+}
+
+function sleepNow(ms) {
+    var start = new Date().getTime(), expire = start + ms;
+    let j = 0;
+    while (new Date().getTime() < expire) { }
+    return;
 }
 
 sliderSize.oninput = function () {
@@ -80,67 +80,13 @@ function draw() {
         srt += wid;
         srt++;
     }
-}
-
-async function mergeSort(i, j) {
-    let mid = Math.floor((i + j) / 2);
-    if (i != mid) {
-        await setAsyncTimeout(() => {
-            mergeSort(i, mid);
-        }, 500);
-        await setAsyncTimeout(() => {
-            mergeSort(mid + 1, j);
-        }, 500);
-    }
-    // await merge(i, mid, mid + 1, j);
-    await setAsyncTimeout(() => {
-        merge(i, mid, mid + 1, j);
-        draw();
-    }, 500);
-}
-// Utility for mergeSort
-async function merge(i0, j0, i1, j1) {
-    let i = i0, j = i1;
-    let arr_temp = new Array();
-    while (i <= j0 || j <= j1) {
-        if (i <= j0 && j <= j1) {
-            if (arr[i] < arr[j]) {
-                arr_temp.push(arr[i]);
-                i++;
-            }
-            else {
-                arr_temp.push(arr[j]);
-                j++;
-            }
-        }
-        else if (i > j0) {
-            while (j <= j1) {
-                arr_temp.push(arr[j]);
-                j++;
-            }
-        }
-        else if (j > j1) {
-            while (i <= j0) {
-                arr_temp.push(arr[i]);
-                i++;
-            }
-        }
-    }
-    for (i = 0; i < arr_temp.length; i++) {
-        arr[i0 + i] = arr_temp[i];
-    }
-    // console.log(1);
-    // await setAsyncTimeout(() => {
-    //     draw();
-    //     console.log(2);
-    //     // Do more stuff
-    // }, 10000);
+    // sleepNow(200);
 }
 
 function bubbleSort() {
-    var kk = j + 1;
+    let kk = j + 1;
     if (arr[j] > arr[j + 1]) {
-        var k = arr[j];
+        let k = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = k;
         arr_col[kk] = col[1];
@@ -172,10 +118,6 @@ function bubbleSort() {
     }
 }
 
-function quickSort() {
-
-}
-
 function heapSort() {
 
 }
@@ -203,10 +145,44 @@ document.getElementById("bubbleSort").onclick = function () {
     itvl = setInterval(bubbleSort, speed);
 }
 
+// MergeSort
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.getElementById("mergeSort").onclick = function () {
     mergeSort(0, arr.length - 1);
     draw();
 }
+function mergeSort(i, j) {
+    let mid = Math.floor((i + j) / 2);
+    if (i != mid) {
+        mergeSort(i, mid);
+        mergeSort(mid + 1, j);
+    }
+    merge(i, mid + 1, j, j - i + 1);
+
+}
+
+function merge(i, j, jf, len) {
+    let j0 = 0;
+    while (j0 <= len) {
+        if (arr[i] > arr[j] && j <= jf) {
+            let kk = arr[j];
+            let k = j;
+            while (k > i) {
+                arr[k] = arr[k - 1];
+                k--;
+            }
+            arr[k] = kk;
+            // sleepNow(1000);
+            j++;
+        }
+        i++;
+        j0++;
+        // console.log(2);
+        // console.log(3);
+        draw();
+    }
+}
+
 
 document.getElementById("heapSort").onclick = function () {
     heapSort();
@@ -229,8 +205,8 @@ async function swapp(arr, a, b) {
 
 
 document.getElementById("quickSort").onclick = function () {
-    runningAlgo =
-        QuickSort(0, arr.length - 1);
+    runningAlgo = 2;
+    QuickSort(0, arr.length - 1);
     draw();
 
 }
