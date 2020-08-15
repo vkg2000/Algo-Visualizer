@@ -261,7 +261,7 @@ document.getElementById("bubbleSort").onclick = function () {
 
 
 
-//All sorting function -START
+//All sorting functions -START
 
 //MERGESORT FUNCTION
 
@@ -460,7 +460,7 @@ function bubbleSort() {
 }
 
 
-//All sorting function -END
+//All sorting functions -END
 
 
 ///////////////////////////////////////////////////////////////
