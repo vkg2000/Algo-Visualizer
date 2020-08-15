@@ -422,7 +422,7 @@ async function heapSort() {
 
 }
 
-//BUBBLESORT SUNCTION
+//BUBBLESORT FUNCTION
 
 function bubbleSort() {
     let kk = j + 1;
