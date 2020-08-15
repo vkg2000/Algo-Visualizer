@@ -24,15 +24,18 @@ These partitions then merge while the color of elements remain as it was before.
 ### Quick Sort
 Pivot element turn pink, which changes into cyan after getting correct poistion.
 Becomes green when all are sorted.\
+<br>
 ![quick-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/quick.gif)
 
 ### Heap Sort
 Elements appear pink while heapification and cyan when sorted.
-Becomes green when all are sorted.\\
+Becomes green when all are sorted.\
+<br>
 ![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
 
 ### Bubble Sort
 Elements which are being compared appear red and pink. Sorted elements appear cyan.\
+<br>
 ![bubble-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/bubble.gif)
 
 
