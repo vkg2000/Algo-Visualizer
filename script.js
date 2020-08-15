@@ -9,7 +9,7 @@ sliderSize = document.getElementById("sizeId");
 sliderSpeed = document.getElementById("speedId");
 maxTime = 1000;
 
-rst_state=true; //TELLS WHETHER WE ARE INSIDE ANY SORT FUNC ,IF SO THEN PAGE GET REFRESHES AND IF NOT THEN RESET WORKS AS USUAL (NO RELODING OF PAGE)
+rst_state = true; //TELLS WHETHER WE ARE INSIDE ANY SORT FUNC ,IF SO THEN PAGE GET REFRESHES AND IF NOT THEN RESET WORKS AS USUAL (NO RELODING OF PAGE)
 
 speed = maxTime - sliderSpeed.value;
 if (speed <= 5) speed *= speed * 2;
@@ -127,17 +127,17 @@ function heapSort() {
 
 // Event Listeners declared here
 document.getElementById("reset").onclick = function () {
-    if(rst_state==true){
-    getArray(sliderSize.value);
-    clrInterval();
-    runningAlgo = 0;
-    draw();}
-    else
-        {
-            window.location.reload();
-            rst_state=false;
-            
-        }
+    if (rst_state == true) {
+        getArray(sliderSize.value);
+        clrInterval();
+        runningAlgo = 0;
+        draw();
+    }
+    else {
+        window.location.reload();
+        rst_state = false;
+
+    }
 }
 
 
@@ -159,24 +159,35 @@ document.getElementById("bubbleSort").onclick = function () {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.getElementById("mergeSort").onclick = function () {
     runningAlgo = 1;
-    rst_state=false;
+    rst_state = false;
     disable_all();
     mergeSort(0, arr.length - 1);
     draw();
 }
 
-async function waitcall(){
+async function waitcall() {
     await sleep(speed);
     draw();
-
 }
+
 async function mergeSort(i, j) {
     let mid = Math.floor((i + j) / 2);
     if (i != mid) {
         await Promise.all([mergeSort(i, mid),
         mergeSort(mid + 1, j)]);
     }
+    let kk = i;
+    for (kk = i; kk < mid + 1; kk++)
+        arr_col[kk] = col[1];
+    for (kk = mid + 1; kk < j + 1; kk++)
+        arr_col[kk] = col[2];
+
     await merge(i, mid + 1, j, j - i + 1);
+    if (j - i == arr.length - 1) {
+        for (i = 0; i < arr.length; i++)
+            arr_col[i] = col[4];
+        await waitcall();
+    }
 
 }
 
@@ -185,12 +196,15 @@ async function merge(i, j, jf, len) {
     while (j0 <= len) {
         if (arr[i] > arr[j] && j <= jf) {
             let kk = arr[j];
+            let kk_col = arr_col[j];
             let k = j;
             while (k > i) {
                 arr[k] = arr[k - 1];
+                arr_col[k] = arr_col[k - 1];
                 k--;
             }
             arr[k] = kk;
+            arr_col[k] = kk_col;
             await waitcall();
             j++;
         }
@@ -199,6 +213,9 @@ async function merge(i, j, jf, len) {
         await waitcall();
         draw();
     }
+    let k = 0;
+    for (k = i; k <= jf; k++)
+        arr_col[i] = col[3];
 }
 
 
@@ -216,65 +233,60 @@ function sleep(ms) {
 async function swap(arr, a, b) {
 
     await sleep(speed);
-    [arr[a],arr[b]]=[arr[b],arr[a]];
+    [arr[a], arr[b]] = [arr[b], arr[a]];
     draw();
 }
 
 //FUNCTION TO DISABLE ALL OTHER BUTTONS AND SLIDER WHILE RUNNING OF ANY SORTING FUNCTION
 
-function disable_all(){
-    document.getElementById("sizeId").disabled=true;
-    if(runningAlgo==1)
-    {
-        document.getElementById("quickSort").disabled=true;
-        document.getElementById("heapSort").disabled=true;
-        document.getElementById("bubbleSort").disabled=true;
+function disable_all() {
+    document.getElementById("sizeId").disabled = true;
+    if (runningAlgo == 1) {
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("heapSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
     }
-    else if(runningAlgo==2)
-    {
-        document.getElementById("mergeSort").disabled=true;
-        document.getElementById("heapSort").disabled=true;
-        document.getElementById("bubbleSort").disabled=true;
+    else if (runningAlgo == 2) {
+        document.getElementById("mergeSort").disabled = true;
+        document.getElementById("heapSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
     }
-    else if(runningAlgo==3)
-    {
-        document.getElementById("mergeSort").disabled=true;
-        document.getElementById("quickSort").disabled=true;
-        document.getElementById("bubbleSort").disabled=true;
+    else if (runningAlgo == 3) {
+        document.getElementById("mergeSort").disabled = true;
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
     }
-    else{
-        document.getElementById("mergeSort").disabled=true;
-        document.getElementById("quickSort").disabled=true;
-        document.getElementById("heapSort").disabled=true;
+    else {
+        document.getElementById("mergeSort").disabled = true;
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("heapSort").disabled = true;
     }
-    
+
 }
 
 
 document.getElementById("quickSort").onclick = function () {
     runningAlgo = 2;
-    rst_state=false;
+    rst_state = false;
     disable_all();
     QuickSort(0, arr.length - 1);
     draw();
 
 }
 
-async function QuickSort(start,end)
-{
+async function QuickSort(start, end) {
 
-    
-    if(start<end)
-    {
 
-        var pindex =await Partition(start,end);
-        await Promise.all([QuickSort(start,pindex-1), QuickSort(pindex+1,end)]);
+    if (start < end) {
+
+        var pindex = await Partition(start, end);
+        await Promise.all([QuickSort(start, pindex - 1), QuickSort(pindex + 1, end)]);
     }
-    else{
-        if(start<arr.length)
-            arr_col[start]=col[4];
-        else if(end<arr.length)
-            arr_col[end]=col[4];
+    else {
+        if (start < arr.length)
+            arr_col[start] = col[4];
+        else if (end < arr.length)
+            arr_col[end] = col[4];
         await sleep(100);
         draw();
 
@@ -282,24 +294,21 @@ async function QuickSort(start,end)
 
 }
 
-async function Partition(start,end)
-{
+async function Partition(start, end) {
     var pivot = arr[end];
-    var inti_col=arr_col[end];
-    arr_col[end]=col[2];
+    var inti_col = arr_col[end];
+    arr_col[end] = col[2];
 
     var pindex = start;
-    for(var i=start;i<end;i++)
-    {
-        if(arr[i]<=pivot)
-        {
+    for (var i = start; i < end; i++) {
+        if (arr[i] <= pivot) {
             await swap(arr, i, pindex);
             pindex++;
         }
     }
-    arr_col[pindex]=col[4];
-    if(pindex!=end)
-         arr_col[end]=inti_col;
+    arr_col[pindex] = col[4];
+    if (pindex != end)
+        arr_col[end] = inti_col;
 
     await swap(arr, end, pindex);
 
@@ -315,4 +324,3 @@ async function Partition(start,end)
 document.getElementById("heapSort").onclick = function () {
     heapSort();
 }
-
