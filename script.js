@@ -380,9 +380,11 @@ async function heapSort() {
 
     //var n = arr.length;
     //var color_during_heapify=true;
+    for(var i1=0;i1<arr.length;i1++)
+    arr_col[i1]=col[2];
     for (var i = arr.length / 2 - 1; i >= 0; i--)
         await heapify(arr.length, i);
-
+    
 
     for (var i = arr.length - 1; i > 0; i--) {
         await swap(arr, 0, i);
