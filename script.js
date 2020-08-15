@@ -121,10 +121,6 @@ function bubbleSort() {
     }
 }
 
-function heapSort() {
-
-}
-
 // Event Listeners declared here
 document.getElementById("reset").onclick = function () {
     if (rst_state == true) {
@@ -333,48 +329,44 @@ document.getElementById("heapSort").onclick = function () {
 
 document.getElementById("heapSort").onclick = function () {
     runningAlgo = 3;
-    rst_state=false;
+    rst_state = false;
     disable_all();
     heapSort();
     draw();
 }
 
-async function heapify(nn,i) 
-{ 
+async function heapify(nn, i) {
     var curr = i;
-    var l = 2*i + 1;
-    var r = 2*i + 2;
-  
-    if (l < nn && arr[l] > arr[curr]) 
-        curr = l; 
- 
-    if (r < nn && arr[r] > arr[curr]) 
-        curr = r; 
-  
-    if (curr != i) 
-    { 
-        //[arr[i],arr[curr]]=[arr[curr],arr[i]];  
-        await swap(arr,i,curr);
-        await heapify(nn,curr); 
-    } 
-} 
-  
- 
-async function heapSort() 
-{ 
-    
+    var l = 2 * i + 1;
+    var r = 2 * i + 2;
+
+    if (l < nn && arr[l] > arr[curr])
+        curr = l;
+
+    if (r < nn && arr[r] > arr[curr])
+        curr = r;
+
+    if (curr != i) {
+        //[arr[i],arr[curr]]=[arr[curr],arr[i]];
+        await swap(arr, i, curr);
+        await heapify(nn, curr);
+    }
+}
+
+
+async function heapSort() {
+
     //var n = arr.length;
-    for (var i = arr.length / 2 - 1; i >= 0; i--) 
-        await heapify(arr.length, i); 
-  
-    
-    for (var i=arr.length-1; i>0; i--) 
-    { 
-        await swap(arr,0,i);  
-        //[arr[0],arr[i]]=[arr[i],arr[0]]; 
-        await heapify(i,0); 
-    } 
-    
-} 
+    for (var i = arr.length / 2 - 1; i >= 0; i--)
+        await heapify(arr.length, i);
+
+
+    for (var i = arr.length - 1; i > 0; i--) {
+        await swap(arr, 0, i);
+        //[arr[0],arr[i]]=[arr[i],arr[0]];
+        await heapify(i, 0);
+    }
+
+}
 
 //////////////////////////////////////////////////////////////////////
