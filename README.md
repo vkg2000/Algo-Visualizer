@@ -1,5 +1,10 @@
 # Algorithm Visualiser
-A webpage running a script which animates different sorting algorithms making them easier to understand.
+A <a href="https://vkg2000.github.io/Algo-Visualizer/">webpage</a> running a script which animates different sorting algorithms making them easier to understand.\
+Best Viewed on Laptops or switch to portrait mode on mobile screens.
+<br>
+Go to <a href="https://vkg2000.github.io/Algo-Visualizer/">Algo-Visualizer</a> for running the webpage.
+
+
 
 ## Contributors
 
@@ -25,18 +30,18 @@ These partitions then merge while the color of elements remain as it was before.
 Pivot element turn pink, which changes into cyan after getting correct poistion.
 Becomes green when all are sorted.\
 <br>
-![quick-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/quick.gif)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![quick-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/quick.gif)
 
 ### Heap Sort
 Elements appear pink while heapification,remains pink and turns cyan when sorted.
 Becomes green when all are sorted.\
 <br>
-![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
 
 ### Bubble Sort
 Elements which are being compared appear red and pink. Sorted elements appear cyan.\
 <br>
-![bubble-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/bubble.gif)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![bubble-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/bubble.gif)
 
 
 #### Contributing
