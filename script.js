@@ -191,14 +191,11 @@ async function merge(i, j, jf, len) {
                 k--;
             }
             arr[k] = kk;
-            // sleepNow(1000);
             await waitcall();
             j++;
         }
         i++;
         j0++;
-        // console.log(2);
-        // console.log(3);
         await waitcall();
         draw();
     }
