@@ -1,6 +1,6 @@
 # Algorithm Visualizer
 A <a href="https://vkg2000.github.io/Algo-Visualizer/">webpage</a> running a script which animates different sorting algorithms making them easier to understand.\
-Best Viewed on Laptops or switch to portrait mode on mobile screens.
+Best Viewed on Laptops or switch to landscape mode on mobile screens.
 <br>
 Go to <a href="https://vkg2000.github.io/Algo-Visualizer/">Algo-Visualizer</a> for running the webpage.
 
