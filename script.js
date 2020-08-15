@@ -243,27 +243,6 @@ function disable_all() {
     document.getElementById("heapSort").disabled = true;
     document.getElementById("bubbleSort").disabled = true;
     document.getElementById("mergeSort").disabled = true;
-    // if (runningAlgo == 1) {
-    //     document.getElementById("quickSort").disabled = true;
-    //     document.getElementById("heapSort").disabled = true;
-    //     document.getElementById("bubbleSort").disabled = true;
-    // }
-    // else if (runningAlgo == 2) {
-    //     document.getElementById("mergeSort").disabled = true;
-    //     document.getElementById("heapSort").disabled = true;
-    //     document.getElementById("bubbleSort").disabled = true;
-    // }
-    // else if (runningAlgo == 3) {
-    //     document.getElementById("mergeSort").disabled = true;
-    //     document.getElementById("quickSort").disabled = true;
-    //     document.getElementById("bubbleSort").disabled = true;
-    // }
-    // else {
-    //     document.getElementById("mergeSort").disabled = true;
-    //     document.getElementById("quickSort").disabled = true;
-    //     document.getElementById("heapSort").disabled = true;
-    // }
-
 }
 
 
