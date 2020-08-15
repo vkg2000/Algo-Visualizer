@@ -8,9 +8,9 @@ A webpage running a script which animates different sorting algorithms making th
 	[LinkedIn](https://www.linkedin.com/in/akarsh-rana/) |
 	ar35@iitbbs.ac.in
 * **Vishal Gupta**\
-	[Github](https://github.com/vkg2000) |
+	[Github](https://github.com/akarshrana) |
 	[LinkedIn](https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/) |
-	vkg10@iitbbs.ac.in
+	vkg@iitbbs.ac.in
 
 ## Colors during sorting
 Elements become green after sorting is finished.
@@ -21,11 +21,12 @@ These partitions then merge while the color of elements remain as it was before.
 ![merge-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/merge.gif)
 
 ### Quick Sort
-// Add quick sort text here\
+Pivot element turn pink, which changes into cyan after getting correct poistion.
+Becomes green when all are sorted.\
 ![quick-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/quick.gif)
 
 ### Heap Sort
-Elements appear pink in heap and cyan when sorted.
+Elements appear pink while heapification and cyan when sorted.
 Becomes green when all are sorted.\
 ![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
 
