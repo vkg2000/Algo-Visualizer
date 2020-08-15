@@ -19,7 +19,7 @@ Elements become green after sorting is finished.
 Two partitions are created at each step first appears red and second appears pink.
 These partitions then merge while the color of elements remain as it was before.\
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;![merge-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/merge.gif)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![merge-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/merge.gif)
 
 ### Quick Sort
 Pivot element turn pink, which changes into cyan after getting correct poistion.
