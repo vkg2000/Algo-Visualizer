@@ -1,75 +1,40 @@
-// Global Variables -START
+// Initializer
+function init() {
+    // Global Variables -START////////////////////////////////////////////////////
+    canvas = document.getElementById("target-id");
+    context = canvas.getContext("2d");
+    col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
+    arr_col = [];                              // stores color of elements
+    arr = [];
+    intervalRunning = false;                   // used in bubblesort
+    sliderSize = document.getElementById("sizeId");
+    sliderSpeed = document.getElementById("speedId");
+    maxTime = 1000;                            // min speed value
+    changed = false;
+    rst_state = true;                          // false if any function is running, reset won't refresh whn false
+    runningAlgo = 0;
+    // This variable should contain the number of running algorithm at all times
+    // 0 : no runningAlgo
+    // 1 : mergeSort
+    // 2 : quickSort
+    // 3 : heapSort
+    // 4 : bubbleSort
 
-canvas = document.getElementById("target-id");
-context = canvas.getContext("2d");
-col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
-arr_col = [];
-arr = [];
-intervalRunning = false;
-sliderSize = document.getElementById("sizeId");
-sliderSpeed = document.getElementById("speedId");
-maxTime = 1000;
-changed = false;
+    //Global Variables -END////////////////////////////////////////////////////////
 
-speed = maxTime - sliderSpeed.value;
-if (speed <= 5) speed *= speed * 2;
-if (speed <= 20) speed *= speed;
-
-runningAlgo = 0;
-// This variable should contain the number of running algorithm at all times
-// 0 : no runningAlgo
-// 1 : mergeSort
-// 2 : quickSort
-// 3 : heapSort
-// 4 : bubbleSort
-
-
-rst_state = true;
- //Tells whether we are inside any sort function ,if SO then page refreshes on clicking "RESET"..... 
- //....otherwise it works as usual i.e no loading of page on clicking "RESET"
-
-
- //Global Variables -END
-
-
-
-
-
-///////////////////////////
-
-
-
-
-
-
-
-// All Utility functions used -START
-
-//Declaring the following two function global
-
-getArray(sliderSize.value);
-draw();
-
- //Function to catch size of array-current value from slider
-
-sliderSize.oninput = function () {
-    clrInterval();
-    getArray(this.value);
+    // Initialising canvas and variables
+    speed = maxTime - sliderSpeed.value;
+    if (speed <= 20) speed *= speed;
+    getArray(sliderSize.value);
     draw();
 }
+init();
 
-//Function to catch speed of sorting-current value from slider
 
-sliderSpeed.oninput = function () {
-    speed = maxTime - this.value;
-    if (speed <= 20) speed *= speed;
-    changed = intervalRunning;
-    clrInterval();
-    if (runningAlgo == 4)
-        document.getElementById("bubbleSort").onclick();
-}
 
-// Function to generate random Array of given size
+// Utility functions -START/////////////////////////////////////////////////
+
+// Generates random Array of given size
 function getArray(length) {
     var arr_random = new Array();
     var arr_range = 500;
@@ -83,9 +48,7 @@ function getArray(length) {
     arr_col = arr_random;
 }
 
-
-// Draw function helping in drawing current-array values on canvas
-
+// Draws arr using arr_col on canvas
 function draw() {
     context.clearRect(0, 0, 1100, 550);
     var wid = 1100 / arr.length - 1;
@@ -98,9 +61,81 @@ function draw() {
     }
 }
 
+// Disables all buttons
+function disable_all() {
+    document.getElementById("sizeId").disabled = true;
 
-// RESET EVENT LISTENER
+    if (runningAlgo == 1) {
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("heapSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
+    }
+    else if (runningAlgo == 2) {
+        document.getElementById("heapSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
+        document.getElementById("mergeSort").disabled = true;
+    }
+    else if (runningAlgo == 3) {
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("bubbleSort").disabled = true;
+        document.getElementById("mergeSort").disabled = true;
+    }
+    else {
+        document.getElementById("quickSort").disabled = true;
+        document.getElementById("heapSort").disabled = true;
+        document.getElementById("mergeSort").disabled = true;
+    }
 
+}
+
+// Introduces delay
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Calls draw after a delay
+async function waitcall() {
+    await sleep(speed);
+    draw();
+}
+
+async function swap(arr, a, b) {
+    await sleep(speed);
+    [arr[a], arr[b]] = [arr[b], arr[a]];
+    draw();
+}
+
+function clrInterval() {
+    if (intervalRunning) {
+        intervalRunning = false;
+        clearInterval(itvl);
+    }
+}
+
+// Utility functions -END///////////////////////////////////////////////////////////////
+
+
+
+// Event Listeners -START///////////////////////////////////////////////////////////////
+
+// Size slider value change event listener
+sliderSize.oninput = function () {
+    clrInterval();
+    getArray(this.value);
+    draw();
+}
+
+// Speed slider value change event listener
+sliderSpeed.oninput = function () {
+    speed = maxTime - this.value;
+    if (speed <= 20) speed *= speed;
+    changed = intervalRunning;
+    clrInterval();
+    if (runningAlgo == 4)
+        document.getElementById("bubbleSort").onclick();
+}
+
+// Reset event listener
 document.getElementById("reset").onclick = function () {
     if (rst_state == true) {
         getArray(sliderSize.value);
@@ -115,156 +150,65 @@ document.getElementById("reset").onclick = function () {
     }
 }
 
-
-//Disabling all other buttons while execution of any sort-function
-
-function disable_all() {
-    document.getElementById("sizeId").disabled = true;
-
-    if(runningAlgo==1){
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("heapSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-    }
-    else if(runningAlgo==2){
-        document.getElementById("heapSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-        document.getElementById("mergeSort").disabled = true;
-    }
-    else if(runningAlgo==3)
-    {
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-        document.getElementById("mergeSort").disabled = true;
-    }
-    else{
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("heapSort").disabled = true;
-        document.getElementById("mergeSort").disabled = true;
-    }
-    
-}
-
-//Function helping in visualization of changing array by introducing delay
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-//Utility function helping in visualization by inroducing delay
-
-async function waitcall() {
-    await sleep(speed);
-    draw();
-}
-
-
-//Swap Function 
-
-async function swap(arr, a, b) {
-
-    await sleep(speed);
-    [arr[a], arr[b]] = [arr[b], arr[a]];
-    draw();
-}
-
-
-//
-function clrInterval() {
-    if (intervalRunning) {
-        intervalRunning = false;
-        clearInterval(itvl);
-    }
-}
-
-
-
-//All Utility functions used -end
-
-
-
-
-
-///////////////////////////////////////
-
-
-
-
-
-//All Event Listeners -START
-
 document.getElementById("mergeSort").onclick = function () {
-    if(rst_state==true){
-    runningAlgo = 1;
-    rst_state = false;
-    disable_all();
-    mergeSort(0, arr.length - 1);
-    draw();
+    if (rst_state == true) {
+        runningAlgo = 1;
+        rst_state = false;
+        disable_all();
+        mergeSort(0, arr.length - 1);
+        draw();
     }
 }
 
 document.getElementById("quickSort").onclick = function () {
-    if(rst_state==true){
-    runningAlgo = 2;
-    rst_state = false;
-    disable_all();
-    document.getElementById('quickSort').classList.add('active');
-    QuickSort(0, arr.length - 1);
-    draw();
+    if (rst_state == true) {
+        runningAlgo = 2;
+        rst_state = false;
+        disable_all();
+        document.getElementById('quickSort').classList.add('active');
+        QuickSort(0, arr.length - 1);
+        draw();
     }
-
+    0
 }
 
 
 document.getElementById("heapSort").onclick = function () {
-    if(rst_state==true){
-    runningAlgo = 3;
-    rst_state = false;
-    disable_all();
-
-    heapSort();
-    draw();
+    if (rst_state == true) {
+        runningAlgo = 3;
+        rst_state = false;
+        disable_all();
+        heapSort();
+        draw();
     }
 }
 
 document.getElementById("bubbleSort").onclick = function () {
-    if(rst_state==true){
+    // if (rst_state == true) {
     if (intervalRunning)
         return;
     if (!changed) {
         i = 0;
         j = 0;
-        arr_col[0] = col[0];
     }
+    arr_col[0] = col[0];
+    // }
     runningAlgo = 4;
     rst_state = false;
     disable_all();
     intervalRunning = true;
     changed = false;
     itvl = setInterval(bubbleSort, speed);
+
 }
-}
 
-//All Event Listeners -END
-
+// Event Listeners -END///////////////////////////////////////////////////
 
 
 
+// Sorting functions -START////////////////////////////////////////////
 
-
-
-///////////////////////////////////////////
-
-
-
-
-
-
-
-//All sorting functions -START
-
-//MERGESORT FUNCTION
-
+// Mergesort-----------------------------------------
 async function mergeSort(i, j) {
     let mid = Math.floor((i + j) / 2);
     if (i != mid) {
@@ -286,8 +230,7 @@ async function mergeSort(i, j) {
 
 }
 
-//utility function for merging array
-
+// Utility to merge
 async function merge(i, j, jf, len) {
     let j0 = 0;
     while (j0 <= len) {
@@ -314,12 +257,12 @@ async function merge(i, j, jf, len) {
     for (k = i; k <= jf; k++)
         arr_col[i] = col[3];
 }
+//--------------------------------------------------------------------
 
 
-//QUICKSORT FUNCTION
+//Quicksort-----------------------------------------------------------
 
-//utility function to check completion of QUICKSORT function
-
+//Checks completion
 async function checkend() {
     var j = 0;
     while (arr_col[j] == col[3] && j < arr.length)
@@ -332,10 +275,7 @@ async function checkend() {
 }
 
 async function QuickSort(start, end) {
-
-
     if (start < end) {
-
         var pindex = await Partition(start, end);
         await Promise.all([QuickSort(start, pindex - 1), QuickSort(pindex + 1, end)]);
     }
@@ -346,16 +286,11 @@ async function QuickSort(start, end) {
             arr_col[end] = col[3];
         await sleep(100);
         draw();
-
     }
-
     await checkend();
-
-
 }
 
-//utility function for partition of array
-
+// Partition utility
 async function Partition(start, end) {
     var pivot = arr[end];
     var inti_col = arr_col[end];
@@ -376,53 +311,43 @@ async function Partition(start, end) {
 
     return pindex;
 }
+//------------------------------------------------------------------------
 
 
-
-//HEAP-SORT FUNCTION
-
-//utility function for heapifying the array
+//HeapSort----------------------------------------------------------------
 
 async function heapify(nn, i) {
     var curr = i;
     var l = 2 * i + 1;
     var r = 2 * i + 2;
-
     if (l < nn && arr[l] > arr[curr])
         curr = l;
-
     if (r < nn && arr[r] > arr[curr])
         curr = r;
-
     if (curr != i) {
         await swap(arr, i, curr);
         await heapify(nn, curr);
     }
 }
 
-
 async function heapSort() {
-
-    for(var i1=0;i1<arr.length;i1++)
-    arr_col[i1]=col[2];
+    for (var i1 = 0; i1 < arr.length; i1++)
+        arr_col[i1] = col[2];
     for (var i = arr.length / 2 - 1; i >= 0; i--)
         await heapify(arr.length, i);
-
-
     for (var i = arr.length - 1; i > 0; i--) {
         await swap(arr, 0, i);
         arr_col[i] = col[3];
         await heapify(i, 0);
     }
-
     for (i = 0; i < arr.length; i++)
         arr_col[i] = col[4];
     await waitcall();
-
-
 }
+//-----------------------------------------------------------------------
 
-//BUBBLESORT FUNCTION
+
+// Bubblesort------------------------------------------------------------
 
 function bubbleSort() {
     let kk = j + 1;
@@ -458,9 +383,8 @@ function bubbleSort() {
         arr_col[kk + 1] = col[0];
     }
 }
+//-------------------------------------------------------------
 
+// Sorting functions--END//////////////////////////////////////
 
-//All sorting functions -END
-
-
-///////////////////////////////////////////////////////////////
+///////////////////////////////////END/////////////////////////
