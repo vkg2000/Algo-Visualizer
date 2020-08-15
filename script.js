@@ -146,6 +146,8 @@ document.getElementById("bubbleSort").onclick = function () {
         arr_col[0] = col[0];
     }
     runningAlgo = 4;
+    rst_state = false;
+    disable_all();
     intervalRunning = true;
     changed = false;
     itvl = setInterval(bubbleSort, speed);

@@ -70,9 +70,13 @@ body{
 }
 
 .develop{
+	clear: both;
 	float: left;
-	margin-left: 120px;
-	margin-top: 10px;
+	display: flex;
+	margin-left: 470px;
+	margin-top: -70px;
 	font-family: 'Chelsea Market', cursive;
 	font-size: 130%;
 }
+
+
