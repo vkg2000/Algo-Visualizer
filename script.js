@@ -170,6 +170,7 @@ async function waitcall(){
     draw();
 
 }
+
 async function mergeSort(i, j) {
     let mid = Math.floor((i + j) / 2);
     if (i != mid) {
