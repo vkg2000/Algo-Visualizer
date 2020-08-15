@@ -4,13 +4,13 @@ A webpage running a script which animates different sorting algorithms making th
 ## Contributors
 
 * **Akarsh Rana**\
-	[Github](https://github.com/akarshrana)
-	[LinkedIn](https://www.linkedin.com/in/akarsh-rana/)\
-	Contact : ar35@iitbbs.ac.in
+	[Github](https://github.com/akarshrana) |
+	[LinkedIn](https://www.linkedin.com/in/akarsh-rana/) |
+	ar35@iitbbs.ac.in
 * **Vishal Gupta**\
-	[Github](https://github.com/akarshrana)
-	[LinkedIn](https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/)\
-	Contact : vkg@iitbbs.ac.in
+	[Github](https://github.com/akarshrana) |
+	[LinkedIn](https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/) |
+	vkg@iitbbs.ac.in
 
 ## Colors during sorting
 Elements become green after sorting is finished.
