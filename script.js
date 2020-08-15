@@ -239,26 +239,30 @@ async function swap(arr, a, b) {
 
 function disable_all() {
     document.getElementById("sizeId").disabled = true;
-    if (runningAlgo == 1) {
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("heapSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-    }
-    else if (runningAlgo == 2) {
-        document.getElementById("mergeSort").disabled = true;
-        document.getElementById("heapSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-    }
-    else if (runningAlgo == 3) {
-        document.getElementById("mergeSort").disabled = true;
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("bubbleSort").disabled = true;
-    }
-    else {
-        document.getElementById("mergeSort").disabled = true;
-        document.getElementById("quickSort").disabled = true;
-        document.getElementById("heapSort").disabled = true;
-    }
+    document.getElementById("quickSort").disabled = true;
+    document.getElementById("heapSort").disabled = true;
+    document.getElementById("bubbleSort").disabled = true;
+    document.getElementById("mergeSort").disabled = true;
+    // if (runningAlgo == 1) {
+    //     document.getElementById("quickSort").disabled = true;
+    //     document.getElementById("heapSort").disabled = true;
+    //     document.getElementById("bubbleSort").disabled = true;
+    // }
+    // else if (runningAlgo == 2) {
+    //     document.getElementById("mergeSort").disabled = true;
+    //     document.getElementById("heapSort").disabled = true;
+    //     document.getElementById("bubbleSort").disabled = true;
+    // }
+    // else if (runningAlgo == 3) {
+    //     document.getElementById("mergeSort").disabled = true;
+    //     document.getElementById("quickSort").disabled = true;
+    //     document.getElementById("bubbleSort").disabled = true;
+    // }
+    // else {
+    //     document.getElementById("mergeSort").disabled = true;
+    //     document.getElementById("quickSort").disabled = true;
+    //     document.getElementById("heapSort").disabled = true;
+    // }
 
 }
 
@@ -269,20 +273,18 @@ document.getElementById("quickSort").onclick = function () {
     disable_all();
     QuickSort(0, arr.length - 1);
     draw();
-   
+
 }
 
-async function checkend()
-{
-    var j=0;
-    while(arr_col[j]==col[3] && j<arr.length)
+async function checkend() {
+    var j = 0;
+    while (arr_col[j] == col[3] && j < arr.length)
         j++;
-    if(j==arr.length)
-        {
-            for(var k=0;k<arr.length;k++)
-                arr_col[k]=col[4];
-            await waitcall()
-        } 
+    if (j == arr.length) {
+        for (var k = 0; k < arr.length; k++)
+            arr_col[k] = col[4];
+        await waitcall()
+    }
 }
 
 async function QuickSort(start, end) {
@@ -377,7 +379,7 @@ async function heapSort() {
     for (var i = arr.length - 1; i > 0; i--) {
         await swap(arr, 0, i);
         //[arr[0],arr[i]]=[arr[i],arr[0]];
-        arr_col[i]=col[3];
+        arr_col[i] = col[3];
         await heapify(i, 0);
     }
 
