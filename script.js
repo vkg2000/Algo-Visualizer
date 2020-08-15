@@ -267,7 +267,20 @@ document.getElementById("quickSort").onclick = function () {
     disable_all();
     QuickSort(0, arr.length - 1);
     draw();
+   
+}
 
+async function checkend()
+{
+    var j=0;
+    while(arr_col[j]==col[3] && j<arr.length)
+        j++;
+    if(j==arr.length)
+        {
+            for(var k=0;k<arr.length;k++)
+                arr_col[k]=col[4];
+            await waitcall()
+        } 
 }
 
 async function QuickSort(start, end) {
@@ -280,13 +293,16 @@ async function QuickSort(start, end) {
     }
     else {
         if (start < arr.length)
-            arr_col[start] = col[4];
+            arr_col[start] = col[3];
         else if (end < arr.length)
-            arr_col[end] = col[4];
+            arr_col[end] = col[3];
         await sleep(100);
         draw();
 
     }
+
+    await checkend();
+
 
 }
 
@@ -302,7 +318,7 @@ async function Partition(start, end) {
             pindex++;
         }
     }
-    arr_col[pindex] = col[4];
+    arr_col[pindex] = col[3];
     if (pindex != end)
         arr_col[end] = inti_col;
 
@@ -313,13 +329,7 @@ async function Partition(start, end) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Heap Sort
 
-
-//////////////////////////////
-document.getElementById("heapSort").onclick = function () {
-    heapSort();
-}
 
 
 
@@ -357,6 +367,7 @@ async function heapify(nn, i) {
 async function heapSort() {
 
     //var n = arr.length;
+    //var color_during_heapify=true;
     for (var i = arr.length / 2 - 1; i >= 0; i--)
         await heapify(arr.length, i);
 
@@ -364,8 +375,14 @@ async function heapSort() {
     for (var i = arr.length - 1; i > 0; i--) {
         await swap(arr, 0, i);
         //[arr[0],arr[i]]=[arr[i],arr[0]];
+        arr_col[i]=col[3];
         await heapify(i, 0);
     }
+
+    for (i = 0; i < arr.length; i++)
+        arr_col[i] = col[4];
+    await waitcall();
+
 
 }
 
