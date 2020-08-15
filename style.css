@@ -2,11 +2,11 @@ body{
   background-image: url("images/back3.jpg");
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
   text-align:center;
   margin:auto;
   padding:0;
 }
+
 .floatleft{
 	float: left;
 	display: flex;
