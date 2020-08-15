@@ -27,7 +27,7 @@ Becomes green when all are sorted.\
 
 ### Heap Sort
 Elements appear pink while heapification and cyan when sorted.
-Becomes green when all are sorted.\
+Becomes green when all are sorted.\\
 ![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
 
 ### Bubble Sort
