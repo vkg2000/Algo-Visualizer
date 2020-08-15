@@ -28,7 +28,7 @@ Becomes green when all are sorted.\
 ![quick-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/quick.gif)
 
 ### Heap Sort
-Elements appear pink while heapification and cyan when sorted.
+Elements appear pink while heapification,remains pink and turns cyan when sorted.
 Becomes green when all are sorted.\
 <br>
 ![heap-sort](https://github.com/vkg2000/Algo-Visualizer/blob/master/readme_files/heap.gif)
