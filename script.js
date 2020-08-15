@@ -158,20 +158,29 @@ document.getElementById("bubbleSort").onclick = function () {
 // MergeSort
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.getElementById("mergeSort").onclick = function () {
+    runningAlgo = 1;
+    rst_state=false;
+    disable_all();
     mergeSort(0, arr.length - 1);
     draw();
 }
-function mergeSort(i, j) {
+
+async function waitcall(){
+    await sleep(speed);
+    draw();
+
+}
+async function mergeSort(i, j) {
     let mid = Math.floor((i + j) / 2);
     if (i != mid) {
-        mergeSort(i, mid);
-        mergeSort(mid + 1, j);
+        await Promise.all([mergeSort(i, mid),
+        mergeSort(mid + 1, j)]);
     }
-    merge(i, mid + 1, j, j - i + 1);
+    await merge(i, mid + 1, j, j - i + 1);
 
 }
 
-function merge(i, j, jf, len) {
+async function merge(i, j, jf, len) {
     let j0 = 0;
     while (j0 <= len) {
         if (arr[i] > arr[j] && j <= jf) {
@@ -183,12 +192,14 @@ function merge(i, j, jf, len) {
             }
             arr[k] = kk;
             // sleepNow(1000);
+            await waitcall();
             j++;
         }
         i++;
         j0++;
         // console.log(2);
         // console.log(3);
+        await waitcall();
         draw();
     }
 }
@@ -247,6 +258,7 @@ function disable_all(){
 
 document.getElementById("quickSort").onclick = function () {
     runningAlgo = 2;
+    rst_state=false;
     disable_all();
     QuickSort(0, arr.length - 1);
     draw();
@@ -256,7 +268,7 @@ document.getElementById("quickSort").onclick = function () {
 async function QuickSort(start,end)
 {
 
-    rst_state=false;
+    
     if(start<end)
     {
 
