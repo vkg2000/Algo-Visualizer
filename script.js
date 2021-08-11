@@ -1,9 +1,10 @@
 // Initializer
 function init() {
     // Global Variables -START////////////////////////////////////////////////////
-    if(reloadOrNot()==1)
+    if(reloadOrNot()==1){
         var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
-    document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
+        document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
+    }
     canvas = document.getElementById("target-id");
     context = canvas.getContext("2d");
     col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
