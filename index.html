@@ -38,7 +38,7 @@
 		</div>
 
 		<div class="col-md-auto">
-			<h1 class="logo">Algorithm Visualizer</h1>
+			<h2 class="logo">Algorithm Visualizer</h2>
 		</div>
 	</div>
 	</div>
