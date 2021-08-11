@@ -3,7 +3,7 @@
 
 <head>
 	<title>Algo Visualizer</title>
-	<link rel="icon" href="images/icon.jpg">
+	<link rel="icon" href="images/icon.png">
 	<link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
 
@@ -26,62 +26,78 @@
 </head>
 
 <body>
-	<div class="floatleft main">
-		<img style="margin-top: 10px;margin-left: 20px;" src="images/icon.jpg" height="150px" width="180px">
+	<div class="container-fluid ">
+		
+	<div class="row justify-content-md-center">
+		  
 
-		<h1 class="logo">Algorithm Visualizer</h1>
 
+
+		<div class="col-md-auto">
+			<img style="margin-top: 10px;margin-left: 20px;" src="images/icon.png" height="150px" width="180px">
+		</div>
+
+		<div class="col-md-auto">
+			<h1 class="logo">Algorithm Visualizer</h1>
+		</div>
+	</div>
 	</div>
 
-	<div class="workingbar">
 
-		<div class="sidebar">
-			<ul class="list-group">
-				<li class="list-group-item list-group-item-primary">
-					<h3 class="size">Select Size and Speed </h3>
-					<input type="range" min="10" max="200" value="50" class="slider" id="sizeId" name="myRange0">
-					<input type="range" min="1" max="1000" value="100" class="slider" id="speedId" name="myRange1">
+	
+		<div class=" col-md-auto sidebar" id="canvasFigureSidebar">
+			<ul class="list-group list-group-horizontal-xl optionSize">
+
+				<li class="list-group-item list-group-item-primary xx">
+					<h3 class="size">Select Size  </h3>
+					<input type="range" min="10" max="200" value="30" class="slider" id="sizeId" name="myRange0">
 				</li>
+
+				<li class="list-group-item list-group-item-primary xx">
+					<h3 class="size">Select Speed </h3>
+					<input type="range" min="300" max="1000" value="100" class="slider" id="speedId" name="myRange1">
+				</li>
+
 				<li class="list-group-item list-group-item-secondary">
 					<h3 class="size">Select Any Sorting Algorithm</h3>
-					<a href="#"><button type="button" id="mergeSort" class="btn btn-dark">&nbspMerge
-							Sort</button></a><br>
+
+					<button type="button" id="mergeSort" class="btn btn-dark">&nbspMerge
+							Sort</button>
+
 					<button type="button" id="quickSort" class="btn btn-dark">&nbspQuick Sort&nbsp
-						</button><br>
-					<a href="#"><button type="button" id="heapSort" class="btn btn-dark">&nbspHeap Sort
-							&nbsp</button></a>
+					</button>
+
+					<button type="button" id="heapSort" class="btn btn-dark">&nbspHeap Sort
+							&nbsp</button>
+
 					<button type="button" id="bubbleSort" class="btn btn-dark">Bubble Sort</button>
 				</li>
-				<li class="list-group-item list-group-item-success">
-					<button type="button" class="btn btn-danger btnreset" id="reset">Reset</button>
+
+				<li class="list-group-item list-group-item-success xx">
+					<button type="button" class="btn btn-danger btnreset " id="reset">Reset</button>
 				</li>
-				<a target="_blank" href="https://github.com/vkg2000/Algo-Visualizer">
-					<li class="list-group-item list-group-item-light">For More Details</li>
-				</a>
+				<li class="list-group-item list-group-item-light xx " >
+				<a target="_blank" href="https://github.com/vkg2000/Algo-Visualizer">More Details</a>
+				</li>
+
 			</ul>
 		</div>
 
-
-		<div>
-			<canvas class="figure" id="target-id" width=1100 height=550></canvas>
-		</div>
-		</div>
-
-		<br>
-
-		<div >
-			<h1 class="develop">Designed and Developed by &nbsp <a target="_blank"
-					href="https://www.linkedin.com/in/akarsh-rana/"> Akarsh Rana</a> &nbsp and &nbsp <a target="_blank"
-					href="https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/"> Vishal Gupta </a> </h1>
+		<div class="col-md-auto" id="canvasFigure" >
+			<canvas class="figure" id="target-id"  width=0 height=550></canvas>
 		</div>
 
 
+	<br>
 
-
-
-
-
-
+	<div class="container-fluid ">
+		
+		<div class="row justify-content-md-center">
+		<h1 class="develop">Designed and Developed by &nbsp <a target="_blank"
+				href="https://www.linkedin.com/in/akarsh-rana/"> Akarsh Rana</a> &nbsp and &nbsp <a target="_blank"
+				href="https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/"> Vishal Gupta </a> </h1>
+	</div>
+	</div>
 
 
 </body>
