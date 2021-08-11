@@ -1,7 +1,7 @@
 // Initializer
 function init() {
     // Global Variables -START////////////////////////////////////////////////////
-    window.onresize = function(){ location.reload(); }
+    reloadOrNot();
     var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
     document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
     canvas = document.getElementById("target-id");
@@ -36,6 +36,14 @@ init();
 
 
 // Utility functions -START/////////////////////////////////////////////////
+
+// Reload or not as scroll also considered in size change
+function reloadOrNot(){
+    if(!window.onscroll){
+        window.onresize = function(){ location.reload(); }
+    }
+}
+
 
 // Generates random Array of given size
 function getArray(length) {
