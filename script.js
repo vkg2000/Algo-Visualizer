@@ -1,10 +1,9 @@
 // Initializer
 function init() {
     // Global Variables -START////////////////////////////////////////////////////
-    if(reloadOrNot()==1){
-        var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
-        document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
-    }
+    window.onresize = function(){ location.reload(); }
+    var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
+    document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
     canvas = document.getElementById("target-id");
     context = canvas.getContext("2d");
     col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
@@ -38,11 +37,6 @@ init();
 
 // Utility functions -START/////////////////////////////////////////////////
 
-// Reload or not as scroll also considered in size change
-function reloadOrNot(){
-    window.onscroll = function(){return 0;}
-    window.onresize = function(){return 1;}
-}
 
 
 // Generates random Array of given size
