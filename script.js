@@ -1,7 +1,7 @@
 // Initializer
 function init() {
     // Global Variables -START////////////////////////////////////////////////////
-    window.onresize = function(){ location.reload(); }
+    reloadEvent() //doesn't allow to reload when scrolling
     var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
     document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
     canvas = document.getElementById("target-id");
@@ -32,6 +32,14 @@ function init() {
     draw();
 }
 init();
+
+function reloadEvent(){
+    windowWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
+    window.onresize= function(){
+        if(windowWidth !=document.getElementById("canvasFigureSidebar").offsetWidth)
+        location.reload();
+    }
+}
 
 
 
