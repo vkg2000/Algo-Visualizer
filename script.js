@@ -1,6 +1,9 @@
 // Initializer
 function init() {
     // Global Variables -START////////////////////////////////////////////////////
+    window.onresize = function(){ location.reload(); }
+    var dynamicWidth = document.getElementById("canvasFigureSidebar").offsetWidth;
+    document.getElementById("target-id").setAttribute("width",dynamicWidth*0.9)
     canvas = document.getElementById("target-id");
     context = canvas.getContext("2d");
     col = ['#fcba03', '#d60909', '#fc03f4', '#03f4fc', '#9dfc03']; //['yellow','red','pink','cyan','green']
@@ -24,7 +27,7 @@ function init() {
 
     // Initialising canvas and variables
     speed = maxTime - sliderSpeed.value;
-    if (speed <= 20) speed *= speed;
+    //if (speed <= 20) speed *= speed;
     getArray(sliderSize.value);
     draw();
 }
@@ -48,10 +51,13 @@ function getArray(length) {
     arr_col = arr_random;
 }
 
+
+
 // Draws arr using arr_col on canvas
 function draw() {
-    context.clearRect(0, 0, 1100, 550);
-    var wid = 1100 / arr.length - 1;
+    var curr_width = document.getElementById("canvasFigure").offsetWidth;
+    context.clearRect(0, 0, curr_width, 550);
+    var wid = curr_width / arr.length - 1;
     var srt = 0;
     for (var i = 0; i < arr.length; i++) {
         context.fillStyle = arr_col[i];
