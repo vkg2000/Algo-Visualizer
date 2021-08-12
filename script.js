@@ -65,7 +65,7 @@ function getArray(length) {
 
 // Draws arr using arr_col on canvas
 function draw() {
-    var curr_width = document.getElementById("canvasFigure").offsetWidth;
+    var curr_width = document.getElementById("target-id").offsetWidth;
     context.clearRect(0, 0, curr_width, 550);
     var wid = curr_width / arr.length - 1;
     var srt = 0;
