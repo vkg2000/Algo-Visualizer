@@ -34,7 +34,7 @@
 
 
 		<div class="col-md-auto">
-			<img style="margin-top: 10px;margin-left: 20px;" src="images/icon.png" height="100px" width="120px">
+			<img style="margin-top: 10px;" src="images/icon.png" height="100px" width="120px">
 		</div>
 
 		<div class="col-md-auto">
