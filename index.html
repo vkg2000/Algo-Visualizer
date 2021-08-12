@@ -93,9 +93,9 @@
 	<div class="container-fluid ">
 		
 		<div class="row justify-content-md-center">
-		<h1 class="develop">Designed and Developed by &nbsp <a target="_blank"
+		<p class="develop">Designed and Developed by &nbsp <a target="_blank"
 				href="https://www.linkedin.com/in/akarsh-rana/"> Akarsh Rana</a> &nbsp and &nbsp <a target="_blank"
-				href="https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/"> Vishal Gupta </a> </h1>
+				href="https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/"> Vishal Gupta </a> </p>
 	</div>
 	</div>
 
