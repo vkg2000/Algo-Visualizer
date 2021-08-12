@@ -14,7 +14,7 @@ body{
 .logo{
 	margin-top: 20px;
 	font-family: 'Rye', cursive;
-	font-size: 60px;
+	font-size: 50px;
 }
 .main{
 	margin-left: 12%;
@@ -70,9 +70,8 @@ body{
 	clear: both;
 	float: left;
 	display: flex;
-	margin-top: -70px;
-	font-family: 'Chelsea Market', cursive;
-	font-size: 130%;
+	margin-top: -50px;
+	font-size: 100%;
 }
 
 .xx{
