@@ -10,12 +10,10 @@ Best viewed on Laptops or switch to portrait mode on mobile screens.
 
 * **Akarsh Rana**\
 	[Github](https://github.com/akarshrana) |
-	[LinkedIn](https://www.linkedin.com/in/akarsh-rana/) |
-	ar35@iitbbs.ac.in
+
 * **Vishal Gupta**\
 	[Github](https://github.com/vkg2000) |
-	[LinkedIn](https://www.linkedin.com/in/vishal-kumar-gupta-165ba61a2/) |
-	vkg10@iitbbs.ac.in
+
 
 ## Colors during sorting
 Elements become green after sorting is finished.
