@@ -9,10 +9,10 @@ Best viewed on Laptops or switch to portrait mode on mobile screens.
 ## Contributors
 
 * **Akarsh Rana**\
-	[Github](https://github.com/akarshrana) |
+	[Github](https://github.com/akarshrana) 
 
 * **Vishal Gupta**\
-	[Github](https://github.com/vkg2000) |
+	[Github](https://github.com/vkg2000) 
 
 
 ## Colors during sorting
